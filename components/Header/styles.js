@@ -1,56 +1,98 @@
 "use client";
 import { styled } from "@mui/material";
+import Image from "next/image";
 
 export const HeaderWrapper = styled("div")`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 2rem;
-  background-color: #f4f4f4;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-`;
-
-export const LeftWrapper = styled("div")`
-  color: #000;
+  position: relative;
+  //background-color: #000;
   display: flex;
-  gap: 0.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  h1 {
-    font-size: 3rem;
-    margin: 0;
-    text-transform: uppercase;
-    font-weight: 800;
-
-    @media (max-width: 768px) {
-      font-size: 2.5rem;
-    }
-  }
+  padding: 2rem;
 
   h3 {
-    font-size: 1.5rem;
-    margin: 0;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  p {
+    //color: #fff;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 1rem 0;
+    width: 25%;
+    text-align: center;
   }
 
   button {
-    margin-top: 1rem;
-    padding: 0.8rem 2rem;
-    //background-color: #000;
-    color: #000;
-    border: 1px solid #000;
-    border-radius: 50px;
-    font-size: 1rem;
+    margin: 1rem 0;
+    padding: 0.8rem 1rem;
+    border-radius: 25px;
+    color: #7d0323;
+    font-size: 0.8rem;
     font-weight: 600;
+    text-transform: uppercase;
+    border: #7d0323 1px solid;
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+
+    h3 {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 300;
+      padding: 1rem 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+`;
+
+export const HeaderContent = styled("div")`
+  position: relative;
+  background-color: #000;
+  height: 70vh;
+
+  @media (max-width: 768px) {
+    height: 50vh;
+  }
+`;
+
+export const HeaderImage = styled(Image)`
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+export const MainTitle = styled("h1")`
+  color: #7d0323;
+  font-size: 5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
   }
 `;
 
 export const RightWrapper = styled("div")`
   color: #000;
   padding: 2rem;
+`;
+
+export const TextAnimation = styled("p")`
+  color: #7d0323;
 `;

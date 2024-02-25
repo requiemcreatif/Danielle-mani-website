@@ -1,25 +1,46 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Grid } from "@mui/material";
+import Image from "next/image";
+import Navbar from "../Navbar";
 //import Trainer from "../../public/images/trainer.jpg";
-import { HeaderWrapper, LeftWrapper, RightWrapper } from "./styles.js";
+import TrainingCenter from "../../public/images/training_center.svg";
+import {
+  HeaderWrapper,
+  MainTitle,
+  HeaderImage,
+  HeaderContent,
+  TextAnimation,
+} from "./styles.js";
 
 const Header = () => {
   return (
-    <HeaderWrapper>
-      <LeftWrapper>
-        <h1 className="slide-down ">Danielle Mani</h1>
-        <h3 className="fade-in">Coach Sportif Et Bien Être</h3>
-        {/* <p className=" animate-pulse">Site officiel en construction!</p> */}
-        <button className="animate-bounce">Contactez-moi</button>
-      </LeftWrapper>
-      <RightWrapper>
-        <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </Typography>
-      </RightWrapper>
-    </HeaderWrapper>
+    <Box>
+      <HeaderContent className=" bg-black">
+        <HeaderImage
+          src={TrainingCenter}
+          alt="Descriptive Text"
+          layout="fill"
+          objectFit="cover" // 'contain' or 'cover' depending on your needs
+          objectPosition="center center" // Adjust the position if needed
+          style={{ opacity: 0.5 }}
+        />
+        <Navbar />
+
+        <HeaderWrapper>
+          <MainTitle className="slide-down ">Danielle Mani</MainTitle>
+          <h3>Coach Sportif Et Bien Être</h3>
+          <TextAnimation className=" animate-pulse">
+            Site officiel en construction!
+          </TextAnimation>
+
+          <Typography className="text-white">
+            Selon les besoins et les attentes, j’établis un programme
+            personnalisé d’entretien et de remise en forme alliant séances
+            sportives et de massage.
+          </Typography>
+          <button>Contactez-moi</button>
+        </HeaderWrapper>
+      </HeaderContent>
+    </Box>
   );
 };
 

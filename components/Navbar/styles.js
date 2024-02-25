@@ -7,7 +7,7 @@ export const NavbarWrapper = styled("div")`
   padding: 20px 0;
 
   h4 {
-    color: white;
+    color: #7d0323;
     font-size: 1.5rem;
     font-weight: 800;
   }
@@ -26,15 +26,17 @@ export const NavbarContainer = styled(Container)`
   color: white;
   display: flex;
   justify-content: space-between;
+  gap: 20px;
+  width: 100%;
   align-items: center;
+`;
+export const NavbarMenu = styled("nav")`
+  padding: 20px 0;
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
 
-  nav {
-    padding: 20px 0;
-    display: flex;
-    gap: 20px;
-
-    @media (max-width: 768px) {
-      display: none;
-    }
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
