@@ -64,7 +64,7 @@ export const HeaderContent = styled("div")`
   height: 70vh;
 
   @media (max-width: 768px) {
-    height: 50vh;
+    height: 75vh;
   }
 `;
 
@@ -84,7 +84,7 @@ export const MainTitle = styled("h1")`
   text-transform: uppercase;
 
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
   }
 `;
 
