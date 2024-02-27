@@ -3,15 +3,15 @@ import { styled } from "@mui/material";
 import Image from "next/image";
 
 export const HeaderContainer = styled("div")`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
   padding-top: 60px;
 `;
 
 export const HeaderWrapper = styled("div")`
-  position: relative;
-  margin-top: 60px;
+  //position: relative;
+  margin-top: 40px;
   //background-color: #000;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@ export const HeaderWrapper = styled("div")`
 export const HeaderContent = styled("div")`
   position: relative;
   background-color: #000;
-  height: 50vh;
+  height: 700px;
 
   @media (max-width: 768px) {
     height: 85vh;
