@@ -4,6 +4,7 @@ import Image from "next/image";
 
 export const HeaderWrapper = styled("div")`
   position: relative;
+  margin-top: 60px;
   //background-color: #000;
   display: flex;
   flex-direction: column;
@@ -22,8 +23,9 @@ export const HeaderWrapper = styled("div")`
     font-size: 1rem;
     font-weight: 300;
     padding: 1rem 0;
-    width: 25%;
+    width: 30%;
     text-align: center;
+    letter-spacing: 1px;
   }
 
   button {
@@ -36,6 +38,10 @@ export const HeaderWrapper = styled("div")`
     text-transform: uppercase;
     border: #7d0323 1px solid;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+      width: 60%;
+    }
   }
 
   @media (max-width: 768px) {
@@ -43,15 +49,15 @@ export const HeaderWrapper = styled("div")`
 
     h3 {
       color: #fff;
-      font-size: 1rem;
+      font-size: 1.3rem;
       font-weight: 700;
     }
 
     p {
       color: #fff;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 300;
-      padding: 1rem 0;
+      padding: 0.8rem 0;
       width: 100%;
       text-align: center;
     }
@@ -61,10 +67,10 @@ export const HeaderWrapper = styled("div")`
 export const HeaderContent = styled("div")`
   position: relative;
   background-color: #000;
-  height: 70vh;
+  height: 50vh;
 
   @media (max-width: 768px) {
-    height: 75vh;
+    height: 85vh;
   }
 `;
 
@@ -84,7 +90,7 @@ export const MainTitle = styled("h1")`
   text-transform: uppercase;
 
   @media (max-width: 768px) {
-    font-size: 2.3rem;
+    font-size: 2.35rem;
   }
 `;
 
@@ -95,4 +101,6 @@ export const RightWrapper = styled("div")`
 
 export const TextAnimation = styled("p")`
   color: #7d0323;
+  margin: 0;
+  padding: 0;
 `;

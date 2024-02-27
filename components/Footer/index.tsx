@@ -25,7 +25,7 @@ const Footer = () => {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            53 Boulevard de Pesaro 92000 Nanterre
+            4-6 Avenue Émile Accolas 75007 Paris!
           </p>
         </div>
         <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
