@@ -2,6 +2,13 @@
 import { styled } from "@mui/material";
 import Image from "next/image";
 
+export const HeaderContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 60px;
+`;
+
 export const HeaderWrapper = styled("div")`
   position: relative;
   margin-top: 60px;

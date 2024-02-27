@@ -9,6 +9,7 @@ import {
   HeaderImage,
   HeaderContent,
   TextAnimation,
+  HeaderContainer,
 } from "./styles.js";
 
 const Header = () => {
@@ -24,21 +25,22 @@ const Header = () => {
           // style={{ opacity: 0.5 }}
         /> */}
         <Navbar />
-
-        <HeaderWrapper>
-          <MainTitle className="slide-down ">Danielle Mani</MainTitle>
-          <h3>Coach Sportif Et Bien Être</h3>
-          {/* <TextAnimation className=" animate-pulse">
+        <HeaderContainer>
+          <HeaderWrapper>
+            <MainTitle className="slide-down ">Danielle Mani</MainTitle>
+            <h3>Coach Sportif Et Bien Être</h3>
+            {/* <TextAnimation className=" animate-pulse">
             Site officiel en construction!
           </TextAnimation> */}
 
-          <Typography className="text-white">
-            Selon les besoins et les attentes, j’établis un programme
-            personnalisé d’entretien et de remise en forme alliant séances
-            sportives et de massage.
-          </Typography>
-          <button>Contactez-moi</button>
-        </HeaderWrapper>
+            <Typography className="text-white">
+              Selon les besoins et les attentes, j’établis un programme
+              personnalisé d’entretien et de remise en forme alliant séances
+              sportives et de massage.
+            </Typography>
+            <button>Contactez-moi</button>
+          </HeaderWrapper>
+        </HeaderContainer>
       </HeaderContent>
     </Box>
   );

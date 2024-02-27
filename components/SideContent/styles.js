@@ -20,7 +20,7 @@ export const SideContentWrapper = styled("div")`
 `;
 
 export const SideArticle = styled("div")`
-  padding: 5px;
+  padding: 10px;
   &:hover {
     background-color: #f0f0f0;
     border-radius: 10px;
