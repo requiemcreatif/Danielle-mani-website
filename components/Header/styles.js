@@ -3,6 +3,7 @@ import { styled, Typography } from "@mui/material";
 import Image from "next/image";
 import TrainingCenter from "../../public/images/training_center.svg";
 import DarkCenter from "../../public/images/dark_center.png";
+import Background from "../../public/images/background.png";
 
 export const HeaderContainer = styled("div")`
   /* display: flex;
@@ -60,7 +61,7 @@ export const HeaderWrapper = styled("div")`
       color: #fff;
       font-size: 1.1rem;
       font-weight: 700;
-      padding: 0.8rem 0;
+      padding: 20px 0;
     }
 
     p {
@@ -75,17 +76,18 @@ export const HeaderWrapper = styled("div")`
 `;
 
 export const HeaderContent = styled("div")`
-  background-image: url(${DarkCenter.src});
+  background-image: url(${Background.src});
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   opacity: 0.9;
-  height: 40vh;
+  height: 42vh;
   //position: relative;
   border-radius: 10px;
   //background-color: #000;
 
   @media (max-width: 768px) {
-    height: 80vh;
+    height: 95vh;
   }
 `;
 
@@ -99,7 +101,7 @@ export const HeaderImage = styled(Image)`
 `;
 
 export const TitleContainer = styled("div")`
-  margin: 0;
+  //margin-top: 30px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -107,6 +109,10 @@ export const TitleContainer = styled("div")`
   align-items: center;
   align-items: center;
   gap: 0;
+
+  @media (max-width: 768px) {
+    margin: 0;
+  }
 `;
 
 export const DanielleTitle = styled("h1")`
