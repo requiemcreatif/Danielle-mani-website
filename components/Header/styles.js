@@ -82,8 +82,9 @@ export const HeaderContent = styled("div")`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.9;
-  height: 42vh;
+  //opacity: 0.9;
+  height: auto;
+  //height: 80vh;
   //position: relative;
   border-radius: 10px;
   //background-color: #000;
