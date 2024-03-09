@@ -50,12 +50,14 @@ export const HeaderWrapper = styled("div")`
     cursor: pointer;
 
     @media (max-width: 768px) {
-      width: 60%;
+      width: 80%;
+      margin-bottom: 10px;
     }
   }
 
   @media (max-width: 768px) {
     justify-content: flex-start;
+    margin-top: 30px;
 
     h3 {
       color: #fff;
@@ -87,7 +89,7 @@ export const HeaderContent = styled("div")`
   //background-color: #000;
 
   @media (max-width: 768px) {
-    height: 95vh;
+    height: 100vh;
   }
 `;
 
