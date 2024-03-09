@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Danielle from "../../public/images/danielle_yoga.png";
 import { Container } from "@mui/material";
 import SideContent from "../SideContent";
 import {
@@ -23,10 +24,11 @@ const MainContent = () => {
               <ImageContent>
                 {/* <h1>Qui suis-je?</h1> */}
                 <Image
-                  src={DanielleCoach}
+                  src={Danielle}
                   alt="Descriptive Text"
-                  width={400}
-                  height={500}
+                  width={270}
+                  height={400}
+                  objectFit="cover"
                   //style={{ borderRadius: "10px" }}
                 />
               </ImageContent>
@@ -40,23 +42,13 @@ const MainContent = () => {
                 en forme, <strong>le sport et le bien être</strong> incluent
                 également le massage.
                 <br />
-                {/* <br/> Je me suis donc formée à différentes techniques :<br /> -le
-              massage sportif pour aider à la récupération musculaire et
-              l’élimination de l’acide lactique,
-              <br />- <strong>le drainage lymphatique</strong> qui est une
-              technique de massage qui active la circulation de la lymphe dans
-              le corps, réduit la rétention d’eau, améliore l’aspect de la peau
-              et affine la silhouette. <br />
-              Selon les besoins et les attentes, j’établis un programme
-              personnalisé d’entretien et de remise en forme alliant séances
-              sportives et de massage. Pour plus de renseignements, vous pouvez
-              me contacter au numéro de téléphone et adresse du site. */}
               </MainDescription>
             </MainContentWrapper>
             <SecondDescription>
               <br /> Je me suis donc formée à différentes techniques :<br /> -le
               massage sportif pour aider à la récupération musculaire et
               l’élimination de l’acide lactique.
+              <br />
               <br />- <strong>le drainage lymphatique</strong> qui est une
               technique de massage qui active la circulation de la lymphe dans
               le corps, réduit la rétention d’eau, améliore l’aspect de la peau

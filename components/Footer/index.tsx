@@ -5,20 +5,23 @@ import { FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className=" items-stretch bg-[#21272a] text-white py-5">
-      <div className="mx-auto grid justify-center text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left lg:gap-2">
-        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+    <div className=" items-stretch bg-[#21272a] text-white py-5 mt-10">
+      <div className="mx-auto grid justify-center text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-3 lg:text-left lg:gap-2">
+        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-[#7d0323] hover:dark:bg-neutral-800/30">
           <h2 className={`mb-3 text-md font-semibold`}>
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none hover:text-[#7d0323]">
               Contact
             </span>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+          <a
+            href="mailto:info@daniellemani.com"
+            className={`m-0 max-w-[30ch] text-sm opacity-50`}
+          >
             info@daniellemani.com
-          </p>
+          </a>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>0642879373</p>
         </div>
-        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+        {/* <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
           <h2 className={`mb-3 text-md font-semibold`}>
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               Localisation{" "}
@@ -27,10 +30,10 @@ const Footer = () => {
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
             4-6 Avenue Émile Accolas 75007 Paris!
           </p>
-        </div>
-        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+        </div> */}
+        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-[#7d0323] hover:dark:bg-neutral-800/30">
           <h2 className={`mb-3 text-md font-semibold`}>
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none hover:text-[#7d0323]">
               Siret{" "}
             </span>
           </h2>
@@ -38,9 +41,9 @@ const Footer = () => {
             53168632700028
           </p>
         </div>
-        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+        <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-[#7d0323] hover:dark:bg-neutral-800/30">
           <h2 className={`mb-3 text-md font-semibold`}>
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none hover:text-[#7d0323]">
               Social
             </span>
           </h2>

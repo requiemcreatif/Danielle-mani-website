@@ -1,6 +1,8 @@
 "use client";
-import { styled } from "@mui/material";
+import { styled, Typography } from "@mui/material";
 import Image from "next/image";
+import TrainingCenter from "../../public/images/training_center.svg";
+import DarkCenter from "../../public/images/dark_center.png";
 
 export const HeaderContainer = styled("div")`
   /* display: flex;
@@ -21,8 +23,8 @@ export const HeaderWrapper = styled("div")`
 
   h3 {
     color: #fff;
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 500;
   }
 
   p {
@@ -56,13 +58,14 @@ export const HeaderWrapper = styled("div")`
 
     h3 {
       color: #fff;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 700;
+      padding: 0.8rem 0;
     }
 
     p {
       color: #fff;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 300;
       padding: 0.8rem 0;
       width: 100%;
@@ -72,12 +75,17 @@ export const HeaderWrapper = styled("div")`
 `;
 
 export const HeaderContent = styled("div")`
-  position: relative;
-  background-color: #000;
-  height: 700px;
+  background-image: url(${DarkCenter.src});
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  height: 40vh;
+  //position: relative;
+  border-radius: 10px;
+  //background-color: #000;
 
   @media (max-width: 768px) {
-    height: 85vh;
+    height: 80vh;
   }
 `;
 
@@ -86,18 +94,44 @@ export const HeaderImage = styled(Image)`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  //width: 100%;
+  //height: 100%;
 `;
 
-export const MainTitle = styled("h1")`
+export const TitleContainer = styled("div")`
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  gap: 0;
+`;
+
+export const DanielleTitle = styled("h1")`
+  margin: 0;
   color: #7d0323;
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: 900;
+  line-height: 0.8;
   text-transform: uppercase;
 
   @media (max-width: 768px) {
-    font-size: 2.35rem;
+    font-size: 3.5rem;
+  }
+`;
+
+export const Mani = styled("h1")`
+  color: #7d0323;
+  font-size: 8.5rem;
+  font-weight: 900;
+  //letter-spacing: 6px;
+  line-height: 0.8;
+  text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: 6.5rem;
   }
 `;
 

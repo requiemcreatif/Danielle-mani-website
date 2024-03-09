@@ -39,8 +39,9 @@ export const ImageContent = styled("div")`
   align-items: center;
   padding: 10px 0;
   overflow: hidden;
-  height: 100%;
+  height: auto;
   border-radius: 10px;
+  background-color: #000;
 `;
 
 export const MainDescription = styled("p")`
