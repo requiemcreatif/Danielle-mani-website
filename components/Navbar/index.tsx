@@ -22,17 +22,7 @@ import {
   MobileMenuItems,
 } from "./styles";
 
-// const TfiMenuWithRef = forwardRef<HTMLElement>((props, ref) => (
-//   <TfiMenu {...props} ref={ref} />
-// ));
-
 const Navbar = () => {
-  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // const toggleMobileMenu = () => {
-  //   setIsMobileMenuOpen(!isMobileMenuOpen);
-  // };
-
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLButtonElement>(null);
 
@@ -41,6 +31,7 @@ const Navbar = () => {
   };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
+    event.preventDefault();
     if (
       anchorRef.current &&
       anchorRef.current.contains(event.target as HTMLElement)
@@ -52,6 +43,7 @@ const Navbar = () => {
   };
 
   function handleListKeyDown(event: React.KeyboardEvent) {
+    event.preventDefault();
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
@@ -59,8 +51,6 @@ const Navbar = () => {
       setOpen(false);
     }
   }
-
-  // return focus to the button when we transitioned from !open -> open
   const prevOpen = useRef(open);
   useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -70,18 +60,13 @@ const Navbar = () => {
     prevOpen.current = open;
   }, [open]);
 
-  //const anchorRef = useRef(null);
-
   return (
     <>
       <NavbarWrapper>
         <NavbarContainer>
           <h4>DM</h4>
           <MobileMenuWrapper>
-            <MobileMenu
-            // onClick={toggleMobileMenu}
-            // aria-label="Toggle mobile menu"
-            >
+            <MobileMenu>
               <Button
                 ref={anchorRef}
                 aria-controls={open ? "composition-menu" : undefined}
@@ -120,22 +105,22 @@ const Navbar = () => {
                         aria-labelledby="composition-button"
                         //onKeyDown={handleListKeyDown}
                       >
-                        <Link
+                        <MenuItem
                           href="#home"
                           onClick={(
                             event: React.MouseEvent<HTMLAnchorElement>
                           ) => handleClose(event)}
                         >
                           Accueil
-                        </Link>
-                        <Link
+                        </MenuItem>
+                        <MenuItem
                           href="#services"
                           onClick={(
                             event: React.MouseEvent<HTMLAnchorElement>
                           ) => handleClose(event)}
                         >
                           Services
-                        </Link>
+                        </MenuItem>
                         <Link
                           href="#contact"
                           onClick={(
