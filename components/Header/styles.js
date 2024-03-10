@@ -1,156 +1,107 @@
 "use client";
-import { styled, Typography } from "@mui/material";
+import { styled, Typography, Container } from "@mui/material";
 import Image from "next/image";
 import TrainingCenter from "../../public/images/training_center.svg";
 import DarkCenter from "../../public/images/dark_center.png";
 import Background from "../../public/images/background.png";
 
-export const HeaderContainer = styled("div")`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
-  padding-top: 60px;
-`;
+export const MainContentWrapper = styled(Container)``;
 
-export const HeaderWrapper = styled("div")`
-  //position: relative;
-  margin-top: 40px;
-  //background-color: #000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+export const TopContainer = styled("div")`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   align-items: center;
-  padding: 2rem;
-
-  h3 {
-    color: #fff;
-    font-size: 1.6rem;
-    font-weight: 500;
-  }
-
-  p {
-    //color: #fff;
-    font-size: 1rem;
-    font-weight: 300;
-    padding: 1rem 0;
-    width: 30%;
-    text-align: center;
-    letter-spacing: 1px;
-  }
-
-  button {
-    margin: 1rem 0;
-    padding: 0.8rem 1rem;
-    border-radius: 25px;
-    color: #7d0323;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border: #7d0323 1px solid;
-    cursor: pointer;
-
-    @media (max-width: 768px) {
-      width: 80%;
-      margin-bottom: 10px;
-    }
-  }
+  justify-content: center;
+  padding: 10px;
+  margin-top: 60px;
 
   @media (max-width: 768px) {
-    justify-content: flex-start;
-    margin-top: 30px;
-
-    h3 {
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 20px 0;
+    grid-template-columns: 1fr;
+    & > :nth-child(1) {
+      order: 2;
     }
-
-    p {
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 300;
-      padding: 0.8rem 0;
-      width: 100%;
-      text-align: center;
+    & > :nth-child(2) {
+      order: 1;
     }
   }
 `;
 
-export const HeaderContent = styled("div")`
-  background-image: url(${Background.src});
+export const TopLeft = styled("div")`
+  h4 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+
+    @media (max-width: 768px) {
+      font-size: 1.6rem;
+    }
+  }
+  p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+`;
+
+export const Headerbutton = styled("button")`
+  background-color: #7d0323;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+`;
+
+export const TopRight = styled("div")`
+  position: relative;
+  background-image: url(${TrainingCenter.src});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  //opacity: 0.9;
-  height: auto;
-  //height: 80vh;
-  //position: relative;
   border-radius: 10px;
-  //background-color: #000;
-
-  @media (max-width: 768px) {
-    height: 100vh;
-  }
-`;
-
-export const HeaderImage = styled(Image)`
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
-  left: 0;
-  //width: 100%;
-  //height: 100%;
+  width: 100%;
+  height: 400px;
 `;
 
 export const TitleContainer = styled("div")`
-  //margin-top: 30px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-items: center;
-  gap: 0;
+  position: absolute;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  @media (max-width: 768px) {
+  .danielle {
     margin: 0;
+    color: #7d0323;
+    font-size: 4.27rem;
+    font-weight: 900;
+    line-height: 0.8;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      font-size: 3.5rem;
+    }
+  }
+  .mani {
+    color: #7d0323;
+    font-size: 8.5rem;
+    font-weight: 900;
+    //letter-spacing: 6px;
+    line-height: 0.8;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      font-size: 6.5rem;
+    }
   }
 `;
 
-export const DanielleTitle = styled("h1")`
-  margin: 0;
-  color: #7d0323;
-  font-size: 4.5rem;
-  font-weight: 900;
-  line-height: 0.8;
-  text-transform: uppercase;
-
-  @media (max-width: 768px) {
-    font-size: 3.5rem;
-  }
-`;
-
-export const Mani = styled("h1")`
-  color: #7d0323;
-  font-size: 8.5rem;
-  font-weight: 900;
-  //letter-spacing: 6px;
-  line-height: 0.8;
-  text-transform: uppercase;
-
-  @media (max-width: 768px) {
-    font-size: 6.5rem;
-  }
-`;
-
-export const RightWrapper = styled("div")`
-  color: #000;
-  padding: 2rem;
-`;
-
-export const TextAnimation = styled("p")`
-  color: #7d0323;
-  margin: 0;
-  padding: 0;
+export const ImageContainer = styled("div")`
+  border-radius: 10px;
+  overflow: hidden;
 `;
