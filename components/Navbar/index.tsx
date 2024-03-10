@@ -31,11 +31,12 @@ const Navbar = () => {
   };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
-    event.preventDefault();
+    //event.preventDefault();
     if (
       anchorRef.current &&
       anchorRef.current.contains(event.target as HTMLElement)
     ) {
+      //event.preventDefault();
       return;
     }
 
@@ -43,12 +44,13 @@ const Navbar = () => {
   };
 
   function handleListKeyDown(event: React.KeyboardEvent) {
-    event.preventDefault();
+    //event.preventDefault();
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
     } else if (event.key === "Escape") {
       setOpen(false);
+      event.preventDefault();
     }
   }
   const prevOpen = useRef(open);
