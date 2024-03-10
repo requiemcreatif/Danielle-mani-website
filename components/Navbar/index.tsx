@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, forwardRef } from "react";
 import { TfiMenu } from "react-icons/tfi";
 import { MobileMenuView } from "../MobileMenuView";
 import { Box, Container, Button } from "@mui/material";
@@ -21,6 +21,10 @@ import {
   MobileMenuWrapper,
   MobileMenuItems,
 } from "./styles";
+
+const TfiMenuWithRef = forwardRef((props, ref) => (
+  <TfiMenu {...props} ref={ref} />
+));
 
 const Navbar = () => {
   // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -68,6 +72,8 @@ const Navbar = () => {
     prevOpen.current = open;
   }, [open]);
 
+  //const anchorRef = useRef(null);
+
   return (
     <>
       <NavbarWrapper>
@@ -78,9 +84,8 @@ const Navbar = () => {
             // onClick={toggleMobileMenu}
             // aria-label="Toggle mobile menu"
             >
-              <TfiMenu
+              <TfiMenuWithRef
                 ref={anchorRef}
-                id="composition-button"
                 aria-controls={open ? "composition-menu" : undefined}
                 aria-expanded={open ? "true" : undefined}
                 aria-haspopup="true"
