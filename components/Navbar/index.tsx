@@ -22,9 +22,9 @@ import {
   MobileMenuItems,
 } from "./styles";
 
-const TfiMenuWithRef = forwardRef((props, ref) => (
-  <TfiMenu {...props} ref={ref} />
-));
+// const TfiMenuWithRef = forwardRef<HTMLElement>((props, ref) => (
+//   <TfiMenu {...props} ref={ref} />
+// ));
 
 const Navbar = () => {
   // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,16 +34,16 @@ const Navbar = () => {
   // };
 
   const [open, setOpen] = useState(false);
-  const anchorRef = useRef(null);
+  const anchorRef = useRef<HTMLButtonElement>(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event: React.MouseEvent<Document>) => {
+  const handleClose = (event: Event | React.SyntheticEvent) => {
     if (
       anchorRef.current &&
-      (anchorRef.current as HTMLElement).contains(event.target as Node)
+      anchorRef.current.contains(event.target as HTMLElement)
     ) {
       return;
     }
@@ -64,9 +64,7 @@ const Navbar = () => {
   const prevOpen = useRef(open);
   useEffect(() => {
     if (prevOpen.current === true && open === false) {
-      if (anchorRef.current) {
-        (anchorRef.current as HTMLElement).focus();
-      }
+      anchorRef.current!.focus();
     }
 
     prevOpen.current = open;
@@ -84,13 +82,15 @@ const Navbar = () => {
             // onClick={toggleMobileMenu}
             // aria-label="Toggle mobile menu"
             >
-              <TfiMenuWithRef
+              <Button
                 ref={anchorRef}
                 aria-controls={open ? "composition-menu" : undefined}
                 aria-expanded={open ? "true" : undefined}
                 aria-haspopup="true"
                 onClick={handleToggle}
-              />
+              >
+                <TfiMenu className="menu-icon" />
+              </Button>
             </MobileMenu>
             <Popper
               open={open}

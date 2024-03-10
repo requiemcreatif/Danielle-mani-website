@@ -3,11 +3,15 @@ import { styled } from "@mui/material";
 import { Container } from "@mui/material";
 
 export const MobileMenuWrapper = styled("div")`
-  //display: none;
+  .menu-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #000;
+  }
 `;
 
 export const MobileMenuItems = styled("div")`
-  width: 70vw;
+  width: 100vw;
   height: 100vh;
   background-color: #7d0323;
   #composition-menu {
