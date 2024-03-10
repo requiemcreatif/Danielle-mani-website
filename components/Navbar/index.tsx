@@ -69,6 +69,7 @@ const Navbar = () => {
             <MobileMenu>
               <Button
                 ref={anchorRef}
+                id="composition-button"
                 aria-controls={open ? "composition-menu" : undefined}
                 aria-expanded={open ? "true" : undefined}
                 aria-haspopup="true"
@@ -103,7 +104,7 @@ const Navbar = () => {
                         autoFocusItem={open}
                         id="composition-menu"
                         aria-labelledby="composition-button"
-                        //onKeyDown={handleListKeyDown}
+                        onKeyDown={handleListKeyDown}
                       >
                         <Link
                           href="#home"
