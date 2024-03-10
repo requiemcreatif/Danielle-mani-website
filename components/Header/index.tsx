@@ -1,6 +1,7 @@
 import { Box, Container, Typography, Grid, Button } from "@mui/material";
 import Image from "next/image";
 import Navbar from "../Navbar";
+import Link from "next/link";
 import Danielle from "../../public/images/danielle_yoga.png";
 import TrainingCenter from "../../public/images/training_center.svg";
 import DarkCenter from "../../public/images/dark_center.png";
@@ -16,7 +17,7 @@ import {
 
 const Header = () => {
   return (
-    <Box /*className=" bg-black"*/>
+    <Box /*className=" bg-black"*/ id="home">
       <Navbar />
       <MainContentWrapper>
         <TopContainer>
@@ -27,23 +28,14 @@ const Header = () => {
               personnalisé d’entretien et de remise en forme alliant séances
               sportives et de massage.
             </Typography>
-            <Headerbutton>Contactez-moi</Headerbutton>
+            <Headerbutton href="#contact">Contactez-moi</Headerbutton>
           </TopLeft>
           <TopRight>
-            {/* <ImageContainer>
-              <Image
-                src={TrainingCenter}
-                alt="Descriptive Text"
-                objectFit="cover"
-                // width={500}
-                // height={400}
-              />
-            </ImageContainer> */}
             <TitleContainer>
-              <Typography className="danielle" variant="h1">
+              <Typography className="danielle slide-down " variant="h1">
                 Danielle
               </Typography>
-              <Typography className="mani" variant="h1">
+              <Typography className="mani fade-in" variant="h1">
                 Mani
               </Typography>
             </TitleContainer>

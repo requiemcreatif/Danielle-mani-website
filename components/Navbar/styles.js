@@ -2,6 +2,27 @@
 import { styled } from "@mui/material";
 import { Container } from "@mui/material";
 
+export const MobileMenuWrapper = styled("div")`
+  //display: none;
+`;
+
+export const MobileMenuItems = styled("div")`
+  width: 70vw;
+  height: 100vh;
+  background-color: #7d0323;
+  #composition-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    a {
+      font-size: 2rem;
+      text-transform: uppercase;
+      color: #fff;
+    }
+  }
+`;
+
 export const NavbarWrapper = styled(Container)`
   position: fixed;
   top: 0;
@@ -36,6 +57,10 @@ export const NavbarContainer = styled(Container)`
   gap: 20px;
   width: 100%;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 export const NavbarMenu = styled("nav")`
   color: #000;

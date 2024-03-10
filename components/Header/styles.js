@@ -1,9 +1,7 @@
 "use client";
-import { styled, Typography, Container } from "@mui/material";
-import Image from "next/image";
+import { styled, Container } from "@mui/material";
+import Link from "next/link";
 import TrainingCenter from "../../public/images/training_center.svg";
-import DarkCenter from "../../public/images/dark_center.png";
-import Background from "../../public/images/background.png";
 
 export const MainContentWrapper = styled(Container)``;
 
@@ -18,10 +16,10 @@ export const TopContainer = styled("div")`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    & > :nth-child(1) {
+    & > :nth-of-type(1) {
       order: 2;
     }
-    & > :nth-child(2) {
+    & > :nth-of-type(2) {
       order: 1;
     }
   }
@@ -30,7 +28,7 @@ export const TopContainer = styled("div")`
 export const TopLeft = styled("div")`
   h4 {
     font-size: 2rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
 
     @media (max-width: 768px) {
@@ -44,7 +42,7 @@ export const TopLeft = styled("div")`
   }
 `;
 
-export const Headerbutton = styled("button")`
+export const Headerbutton = styled(Link)`
   background-color: #7d0323;
   color: #fff;
   padding: 10px 20px;
@@ -91,12 +89,11 @@ export const TitleContainer = styled("div")`
     color: #7d0323;
     font-size: 8.5rem;
     font-weight: 900;
-    //letter-spacing: 6px;
     line-height: 0.8;
     text-transform: uppercase;
 
     @media (max-width: 768px) {
-      font-size: 6.5rem;
+      font-size: 7rem;
     }
   }
 `;

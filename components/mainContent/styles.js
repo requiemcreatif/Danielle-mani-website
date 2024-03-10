@@ -6,7 +6,6 @@ export const MainContentWrapper = styled(Container)`
   margin-bottom: 60px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  //gap: 20px;
   align-items: center;
   justify-content: center;
   padding: 10px;
@@ -19,6 +18,7 @@ export const MainContentWrapper = styled(Container)`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    margin-bottom: 10px;
   }
 `;
 export const MainTextContainer = styled(Container)`
@@ -28,7 +28,12 @@ export const MainTextContainer = styled(Container)`
     color: #fff;
     line-height: 1.5;
     padding: 10px 0;
-    //margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.5;
+    }
   }
 `;
 export const SecondContainer = styled(Container)`
@@ -43,5 +48,12 @@ export const SecondContainer = styled(Container)`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.5;
+      padding: 5px;
+    }
   }
 `;
