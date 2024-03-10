@@ -105,22 +105,22 @@ const Navbar = () => {
                         aria-labelledby="composition-button"
                         //onKeyDown={handleListKeyDown}
                       >
-                        <MenuItem
+                        <Link
                           href="#home"
                           onClick={(
                             event: React.MouseEvent<HTMLAnchorElement>
                           ) => handleClose(event)}
                         >
                           Accueil
-                        </MenuItem>
-                        <MenuItem
+                        </Link>
+                        <Link
                           href="#services"
                           onClick={(
                             event: React.MouseEvent<HTMLAnchorElement>
                           ) => handleClose(event)}
                         >
                           Services
-                        </MenuItem>
+                        </Link>
                         <Link
                           href="#contact"
                           onClick={(
