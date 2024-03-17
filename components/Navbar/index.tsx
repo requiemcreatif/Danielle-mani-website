@@ -61,102 +61,98 @@ const Navbar = () => {
   }, [open]);
 
   return (
-    <>
-      <NavbarWrapper>
-        <NavbarContainer>
-          <h4>DM</h4>
-          <MobileMenuWrapper>
-            <MobileMenu>
-              <Button
-                ref={anchorRef}
-                id="composition-button"
-                aria-controls={open ? "composition-menu" : undefined}
-                aria-expanded={open ? "true" : undefined}
-                aria-haspopup="true"
-                onClick={handleToggle}
-              >
-                {open ? (
-                  <GrClose className="menu-icon" />
-                ) : (
-                  <TfiMenu className="menu-icon" />
-                )}
-              </Button>
-            </MobileMenu>
-            <Popper
-              open={open}
-              anchorEl={anchorRef.current}
-              role={undefined}
-              placement="bottom-start"
-              transition
-              disablePortal
+    <NavbarWrapper>
+      <NavbarContainer>
+        <h4>DM</h4>
+        <MobileMenuWrapper>
+          <MobileMenu>
+            <Button
+              ref={anchorRef}
+              id="composition-button"
+              aria-controls={open ? "composition-menu" : undefined}
+              aria-expanded={open ? "true" : undefined}
+              aria-haspopup="true"
+              onClick={handleToggle}
             >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  style={{
-                    transformOrigin:
-                      placement === "bottom-start" ? "left top" : "left bottom",
-                  }}
-                >
-                  <MobileMenuItems>
-                    <ClickAwayListener
-                      onClickAway={(event: MouseEvent | TouchEvent) =>
-                        handleClose(event)
-                      }
-                    >
-                      <MenuList
-                        autoFocusItem={open}
-                        id="composition-menu"
-                        aria-labelledby="composition-button"
-                        onKeyDown={handleListKeyDown}
-                      >
-                        <Link
-                          href="#home"
-                          onClick={(
-                            event: React.MouseEvent<HTMLAnchorElement>
-                          ) => handleClose(event)}
-                        >
-                          Accueil
-                        </Link>
-                        <Link
-                          href="#services"
-                          onClick={(
-                            event: React.MouseEvent<HTMLAnchorElement>
-                          ) => handleClose(event)}
-                        >
-                          Services
-                        </Link>
-                        <Link
-                          href="#contact"
-                          onClick={(
-                            event: React.MouseEvent<HTMLAnchorElement>
-                          ) => handleClose(event)}
-                        >
-                          Contact
-                        </Link>
-                      </MenuList>
-                    </ClickAwayListener>
-                  </MobileMenuItems>
-                </Grow>
+              {open ? (
+                <GrClose className="menu-icon" />
+              ) : (
+                <TfiMenu className="menu-icon" />
               )}
-            </Popper>
-          </MobileMenuWrapper>
-          <NavbarMenu>
-            <Link href="#" className="font-light">
-              Accueil
-            </Link>
-            <Link href="#" className="font-light">
-              Services
-            </Link>
-            <Link href="#contact" className="font-light">
-              Contact
-            </Link>
-          </NavbarMenu>
-        </NavbarContainer>
-      </NavbarWrapper>
-
-      {/* {isMobileMenuOpen && <MobileMenuView onClose={toggleMobileMenu} />} */}
-    </>
+            </Button>
+          </MobileMenu>
+          <Popper
+            open={open}
+            anchorEl={anchorRef.current}
+            role={undefined}
+            placement="bottom-start"
+            transition
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{
+                  transformOrigin:
+                    placement === "bottom-start" ? "left top" : "left bottom",
+                }}
+              >
+                <MobileMenuItems>
+                  <ClickAwayListener
+                    onClickAway={(event: MouseEvent | TouchEvent) =>
+                      handleClose(event)
+                    }
+                  >
+                    <MenuList
+                      autoFocusItem={open}
+                      id="composition-menu"
+                      aria-labelledby="composition-button"
+                      onKeyDown={handleListKeyDown}
+                    >
+                      <Link
+                        href="#home"
+                        onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
+                          handleClose(event)
+                        }
+                      >
+                        Accueil
+                      </Link>
+                      <Link
+                        href="#services"
+                        onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
+                          handleClose(event)
+                        }
+                      >
+                        Services
+                      </Link>
+                      <Link
+                        href="#contact"
+                        onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
+                          handleClose(event)
+                        }
+                      >
+                        Contact
+                      </Link>
+                    </MenuList>
+                  </ClickAwayListener>
+                </MobileMenuItems>
+              </Grow>
+            )}
+          </Popper>
+        </MobileMenuWrapper>
+        <NavbarMenu>
+          <Link href="#" className="font-light">
+            Accueil
+          </Link>
+          <Link href="#" className="font-light">
+            Services
+          </Link>
+          <Link href="#contact" className="font-light">
+            Contact
+          </Link>
+        </NavbarMenu>
+      </NavbarContainer>
+    </NavbarWrapper>
   );
 };
 
