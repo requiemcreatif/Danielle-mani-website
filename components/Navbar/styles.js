@@ -11,6 +11,7 @@ export const MobileMenuWrapper = styled("div")`
 `;
 
 export const MobileMenuItems = styled("div")`
+  border-radius: 10px 0 0 0;
   width: 50vw;
   height: 100vh;
   background-color: #7d0323;
@@ -31,7 +32,7 @@ export const MobileMenuItems = styled("div")`
   }
 `;
 
-export const NavbarWrapper = styled(Container)`
+export const NavbarWrapper = styled("div")`
   position: fixed;
   top: 0;
   left: 0;
