@@ -11,7 +11,7 @@ export const MobileMenuWrapper = styled("div")`
 `;
 
 export const MobileMenuItems = styled("div")`
-  width: 100vw;
+  width: 50vw;
   height: 100vh;
   background-color: #7d0323;
   #composition-menu {
@@ -24,6 +24,10 @@ export const MobileMenuItems = styled("div")`
       text-transform: uppercase;
       color: #fff;
     }
+  }
+
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 

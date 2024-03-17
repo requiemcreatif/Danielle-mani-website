@@ -26,7 +26,7 @@ const MainContent = () => {
           </Box>
           <MainTextContainer>
             <Typography>
-              Pendant des années, j'ai pratiqué l'athlétisme (vitesse, relais,
+              {/* Pendant des années, j'ai pratiqué l'athlétisme (vitesse, relais,
               etc.) avant de passer mon <strong>diplôme d'État BEMF</strong>{" "}
               (Brevet des métiers de la forme). Ensuite, je me suis orientée
               vers la préparation physique générale pour les sportifs, avant de
@@ -34,14 +34,19 @@ const MainContent = () => {
               Pour moi, la remise en forme,{" "}
               <strong>le sport et le bien-être</strong> incluent également le
               massage.
-              <br />
+              <br /> */}
+              Passionnée de sports, j'ai pratiqué pendant de nombreuses années
+              l'athlétisme (vitesse, relais, etc.) avant de décider de passer
+              mon diplôme d'État <strong>BEMF</strong> (Brevet des métiers de la
+              forme) et me consacrer à la{" "}
+              <strong>préparation physique générale</strong> pour les sportifs.
             </Typography>
           </MainTextContainer>
         </MainContentWrapper>
       </Box>
       <SecondContainer>
         <Typography>
-          <br />
+          {/* <br />
           Je me suis donc formée à différentes techniques :<br />
           <br />
           - Le massage sportif, pour aider à la récupération musculaire et à
@@ -56,7 +61,10 @@ const MainContent = () => {
           Selon les besoins et les attentes, j'établis un programme personnalisé
           d'entretien et de remise en forme, alliant séances sportives et
           massages. Pour plus de renseignements, vous pouvez me contacter au
-          numéro de téléphone et à l'adresse du site.
+          numéro de téléphone et à l'adresse du site. */}
+          J’axe mon coaching personnalisé autour de trois éléments
+          complémentaires:
+          <br /> - La pratique physique <br />- La nutrition <br />- Le massage
         </Typography>
 
         <SideContent />

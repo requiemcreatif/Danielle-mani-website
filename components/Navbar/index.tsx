@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, forwardRef } from "react";
 import { TfiMenu } from "react-icons/tfi";
+import { GrClose } from "react-icons/gr";
 import { MobileMenuView } from "../MobileMenuView";
 import { Box, Container, Button } from "@mui/material";
 //import * as React from "react";
@@ -31,12 +32,10 @@ const Navbar = () => {
   };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
-    //event.preventDefault();
     if (
       anchorRef.current &&
       anchorRef.current.contains(event.target as HTMLElement)
     ) {
-      //event.preventDefault();
       return;
     }
 
@@ -44,7 +43,6 @@ const Navbar = () => {
   };
 
   function handleListKeyDown(event: React.KeyboardEvent) {
-    //event.preventDefault();
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
@@ -77,7 +75,11 @@ const Navbar = () => {
                 aria-haspopup="true"
                 onClick={handleToggle}
               >
-                <TfiMenu className="menu-icon" />
+                {open ? (
+                  <GrClose className="menu-icon" />
+                ) : (
+                  <TfiMenu className="menu-icon" />
+                )}
               </Button>
             </MobileMenu>
             <Popper
