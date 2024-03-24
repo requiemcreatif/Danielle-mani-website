@@ -25,16 +25,6 @@ const Footer = () => {
           </a>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>0642879373</p>
         </div>
-        {/* <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-          <h2 className={`mb-3 text-md font-semibold`}>
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              Localisation{" "}
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            4-6 Avenue Émile Accolas 75007 Paris!
-          </p>
-        </div> */}
         <div className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300  hover:dark:border-[#7d0323] hover:dark:bg-neutral-800/30">
           <h2 className={`mb-3 text-md font-semibold`}>
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none hover:text-[#7d0323]">
@@ -59,7 +49,11 @@ const Footer = () => {
             >
               <FaInstagram />
             </Link>
-            <Link className="hover:text-[#7d0323] cursor-pointer" href="#">
+            <Link
+              className="hover:text-[#7d0323] cursor-pointer"
+              href="https://www.facebook.com/daniela.roncin"
+              target="_blank"
+            >
               <FaFacebookSquare />
             </Link>
 
