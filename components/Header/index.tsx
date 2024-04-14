@@ -1,10 +1,6 @@
-import { Box, Container, Typography, Grid, Button } from "@mui/material";
-import Image from "next/image";
+import { Box, Typography } from "@mui/material";
 import Navbar from "../Navbar";
-import Link from "next/link";
-import Danielle from "../../public/images/danielle_yoga.png";
-import TrainingCenter from "../../public/images/training_center.svg";
-import DarkCenter from "../../public/images/dark_center.png";
+
 import {
   MainContentWrapper,
   TopContainer,
@@ -17,7 +13,7 @@ import {
 
 const Header = () => {
   return (
-    <Box /*className=" bg-black"*/ id="home">
+    <Box id="home">
       <Navbar />
       <MainContentWrapper>
         <TopContainer>
