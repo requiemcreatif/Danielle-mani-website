@@ -16,10 +16,10 @@ const Footer = () => {
             </span>
           </h2>
           <a
-            href="mailto:info@daniellemani.com"
+            href="mailto:daniellemani811@gmail.com"
             className={`m-0 max-w-[30ch] text-sm opacity-50`}
           >
-            info@daniellemani.com
+            daniellemani811@gmail.com
           </a>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>0642879373</p>
         </div>
