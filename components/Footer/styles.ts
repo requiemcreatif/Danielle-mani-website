@@ -1,5 +1,3 @@
-"use client";
-
 import { styled, Box } from "@mui/material";
 
 export const FooterWrapper = styled("footer")(({ theme }) => ({

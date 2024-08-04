@@ -1,5 +1,4 @@
 "use client";
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import {
   ThemeProvider as MUIThemeProvider,
@@ -47,10 +46,15 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       mode,
       primary: {
         main: "#7d0323",
+        contrastText: "#ffffff", // Add this line
       },
       background: {
         default: mode === "light" ? "#ffffff" : "#121212",
         paper: mode === "light" ? "#f5f5f5" : "#1e1e1e",
+      },
+      text: {
+        primary: mode === "light" ? "#121212" : "#ffffff", // Update this line
+        secondary: mode === "light" ? "#666666" : "#a0a0a0", // Add this line for secondary text
       },
     },
     typography: {

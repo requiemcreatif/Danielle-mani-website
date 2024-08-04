@@ -46,6 +46,7 @@ export const HeaderRight = styled("div")(({ theme }) => ({
 }));
 
 export const HeaderButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.primary.contrastText,
   marginTop: theme.spacing(2),
 }));
 

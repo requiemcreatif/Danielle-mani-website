@@ -1,87 +1,61 @@
-"use client";
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Container } from "@mui/material";
 
-export const MobileMenuWrapper = styled("div")`
-  .menu-icon {
-    font-size: 2rem;
-    cursor: pointer;
-    color: #000;
-  }
-`;
+export const NavbarWrapper = styled("nav")(({ theme }) => ({
+  position: "fixed",
+  top: 0,
+  left: 0,
+  right: 0,
+  width: "100%",
+  zIndex: 1100,
+  backgroundColor: theme.palette.background.paper,
+  transition: theme.transitions.create(["background-color"]),
+}));
 
-export const MobileMenuItems = styled("div")`
-  border-radius: 10px 0 0 0;
-  width: 50vw;
-  height: 100vh;
-  background-color: #7d0323;
-  #composition-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 20px;
-    a {
-      font-size: 2rem;
-      text-transform: uppercase;
-      color: #fff;
-    }
-  }
+export const NavbarContainer = styled(Container)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: theme.spacing(2, 3),
+  [theme.breakpoints.up("md")]: {
+    padding: theme.spacing(2, 0),
+  },
+}));
 
-  @media (min-width: 768px) {
-    display: none;
-  }
-`;
+export const NavbarBrand = styled("div")(({ theme }) => ({
+  color: theme.palette.primary.main,
+  fontSize: "1.7rem",
+  fontWeight: 800,
+  letterSpacing: "-0.5px",
+}));
 
-export const NavbarWrapper = styled("div")`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 100;
-  background-color: #fff;
+export const NavbarMenu = styled("div")(({ theme }) => ({
+  display: "none",
+  [theme.breakpoints.up("md")]: {
+    display: "flex",
+    gap: theme.spacing(3),
+  },
+}));
 
-  padding: 10px;
+export const NavLink = styled("a")(({ theme }) => ({
+  color: theme.palette.text.primary,
+  textDecoration: "none",
+  fontSize: "1rem",
+  fontWeight: 600,
+  transition: theme.transitions.create("color"),
+  "&:hover": {
+    color: theme.palette.primary.main,
+  },
+}));
 
-  h4 {
-    color: #7d0323;
-    font-size: 1.7rem;
-    font-weight: 800;
-  }
-`;
-
-export const MobileMenu = styled("div")`
-  display: none;
-  font-size: 2rem;
-
-  @media (max-width: 768px) {
-    display: block;
-  }
-`;
-
-export const NavbarContainer = styled(Container)`
-  padding: 0 10px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  width: 100%;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    padding: 0 20px;
-  }
-`;
-export const NavbarMenu = styled("nav")`
-  color: #000;
-  display: flex;
-  gap: 20px;
-  font-size: 0.9rem;
-
-  a:hover {
-    color: #7d0323;
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
+export const MobileMenuButton = styled("button")(({ theme }) => ({
+  display: "block",
+  background: "none",
+  border: "none",
+  color: theme.palette.text.primary,
+  fontSize: "1.5rem",
+  cursor: "pointer",
+  [theme.breakpoints.up("md")]: {
+    display: "none",
+  },
+}));
