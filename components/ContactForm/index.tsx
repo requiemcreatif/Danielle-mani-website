@@ -90,10 +90,10 @@ const ContactForm = () => {
     <Box
       component="section"
       id="contact"
-      sx={{ bgcolor: "background.paper", py: 8 }}
+      sx={{ bgcolor: "background.paper", py: 2 }}
     >
       <Container maxWidth="md">
-        <Typography variant="h2" component="h2" align="center" gutterBottom>
+        <Typography variant="h3" component="h5" align="center" gutterBottom>
           Contactez-moi
         </Typography>
         <StyledForm onSubmit={handleSubmit}>
