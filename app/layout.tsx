@@ -1,7 +1,10 @@
+"use client";
+
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const montserrat = Montserrat({
   weight: ["400", "600", "700", "800", "900"],
@@ -10,10 +13,10 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Danielle Mani",
-  description: "Coach Sportif Et Bien Être",
-};
+// export const metadata: Metadata = {
+//   title: "Danielle Mani",
+//   description: "Coach Sportif Et Bien Être",
+// };
 
 export default function RootLayout({
   children,
@@ -23,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        {children}
-        <Footer />
+        <ThemeProvider>
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

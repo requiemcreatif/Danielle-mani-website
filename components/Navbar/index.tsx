@@ -1,158 +1,120 @@
 "use client";
 
-import { useState, useEffect, useRef, forwardRef } from "react";
-import { TfiMenu } from "react-icons/tfi";
-import { GrClose } from "react-icons/gr";
-import { MobileMenuView } from "../MobileMenuView";
-import { Box, Container, Button } from "@mui/material";
-//import * as React from "react";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Grow from "@mui/material/Grow";
-import Paper from "@mui/material/Paper";
-import Popper from "@mui/material/Popper";
-import MenuItem from "@mui/material/MenuItem";
-import MenuList from "@mui/material/MenuList";
-import Stack from "@mui/material/Stack";
-import Link from "next/link";
+import React, { useState } from "react";
 import {
-  NavbarWrapper,
-  NavbarContainer,
-  MobileMenu,
-  NavbarMenu,
-  MobileMenuWrapper,
-  MobileMenuItems,
-} from "./styles";
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Switch,
+  useMediaQuery,
+  useTheme as useMuiTheme,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useTheme } from "@/components/providers/ThemeProvider";
+import Link from "next/link";
+import { styled } from "@mui/system";
+
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  backgroundColor: theme.palette.background.paper,
+  color: theme.palette.text.primary,
+}));
+
+const NavLink = styled(Link)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  textDecoration: "none",
+  "&:hover": {
+    color: theme.palette.primary.main,
+  },
+}));
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const anchorRef = useRef<HTMLButtonElement>(null);
+  const { mode, toggleMode } = useTheme();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const muiTheme = useMuiTheme();
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
+  const navItems = [
+    { text: "Accueil", href: "#home" },
+    { text: "Services", href: "#services" },
+    { text: "Contact", href: "#contact" },
+  ];
 
-  const handleClose = (event: Event | React.SyntheticEvent) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
-    ) {
-      return;
-    }
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+      setDrawerOpen(open);
+    };
 
-    setOpen(false);
-  };
-
-  function handleListKeyDown(event: React.KeyboardEvent) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === "Escape") {
-      setOpen(false);
-      event.preventDefault();
-    }
-  }
-  const prevOpen = useRef(open);
-  useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current!.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
+  const drawer = (
+    <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <List>
+        {navItems.map((item) => (
+          <ListItem
+            button
+            key={item.text}
+            component={Link}
+            href={item.href}
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemText primary={item.text} />
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
+  );
 
   return (
-    <NavbarWrapper>
-      <NavbarContainer>
-        <h4>DM</h4>
-        <MobileMenuWrapper>
-          <MobileMenu>
-            <Button
-              ref={anchorRef}
-              id="composition-button"
-              aria-controls={open ? "composition-menu" : undefined}
-              aria-expanded={open ? "true" : undefined}
-              aria-haspopup="true"
-              onClick={handleToggle}
+    <StyledAppBar position="fixed">
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          DM
+        </Typography>
+        {isMobile ? (
+          <>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
             >
-              {open ? (
-                <GrClose className="menu-icon" />
-              ) : (
-                <TfiMenu className="menu-icon" />
-              )}
-            </Button>
-          </MobileMenu>
-          <Popper
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            placement="bottom-start"
-            transition
-            disablePortal
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === "bottom-start" ? "left top" : "left bottom",
-                }}
+              <MenuIcon />
+            </IconButton>
+            {drawer}
+          </>
+        ) : (
+          <>
+            {navItems.map((item) => (
+              <Button
+                key={item.text}
+                color="inherit"
+                component={NavLink}
+                href={item.href}
               >
-                <MobileMenuItems>
-                  <ClickAwayListener
-                    onClickAway={(event: MouseEvent | TouchEvent) =>
-                      handleClose(event)
-                    }
-                  >
-                    <MenuList
-                      autoFocusItem={open}
-                      id="composition-menu"
-                      aria-labelledby="composition-button"
-                      onKeyDown={handleListKeyDown}
-                    >
-                      <Link
-                        href="#home"
-                        onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
-                          handleClose(event)
-                        }
-                      >
-                        Accueil
-                      </Link>
-                      <Link
-                        href="#services"
-                        onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
-                          handleClose(event)
-                        }
-                      >
-                        Services
-                      </Link>
-                      <Link
-                        href="#contact"
-                        onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
-                          handleClose(event)
-                        }
-                      >
-                        Contact
-                      </Link>
-                    </MenuList>
-                  </ClickAwayListener>
-                </MobileMenuItems>
-              </Grow>
-            )}
-          </Popper>
-        </MobileMenuWrapper>
-        <NavbarMenu>
-          <Link href="#" className="font-light">
-            Accueil
-          </Link>
-          <Link href="#" className="font-light">
-            Services
-          </Link>
-          <Link href="#contact" className="font-light">
-            Contact
-          </Link>
-        </NavbarMenu>
-      </NavbarContainer>
-    </NavbarWrapper>
+                {item.text}
+              </Button>
+            ))}
+          </>
+        )}
+        <Switch
+          checked={mode === "dark"}
+          onChange={toggleMode}
+          color="default"
+          inputProps={{ "aria-label": "toggle dark mode" }}
+        />
+      </Toolbar>
+    </StyledAppBar>
   );
 };
 

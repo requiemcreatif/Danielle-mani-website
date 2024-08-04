@@ -1,40 +1,44 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Danielle from "../../public/images/danielle_yoga.png";
-import { Container, Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import SideContent from "../SideContent";
 import {
   MainContentWrapper,
+  ImageContainer,
   MainTextContainer,
   SecondContainer,
+  CoachingList,
+  CoachingItem,
 } from "./styles";
-import DanielleCoach from "../../public/images/danielle_mani_coach.svg";
 
 const MainContent = () => {
+  const theme = useTheme();
+
   return (
-    <Box>
-      <Box bgcolor={"#000"} id="services">
+    <Box component="main">
+      <Box
+        bgcolor={theme.palette.primary.main}
+        color={theme.palette.primary.contrastText}
+        id="services"
+      >
         <MainContentWrapper>
-          <Box className="image-container">
+          <ImageContainer>
             <Image
               src={Danielle}
-              alt="Descriptive Text"
-              width={300}
-              height={400}
+              alt="Danielle Mani practicing yoga"
+              width={400}
+              height={600}
               objectFit="cover"
             />
-          </Box>
+          </ImageContainer>
           <MainTextContainer>
-            <Typography>
-              {/* Pendant des années, j'ai pratiqué l'athlétisme (vitesse, relais,
-              etc.) avant de passer mon <strong>diplôme d'État BEMF</strong>{" "}
-              (Brevet des métiers de la forme). Ensuite, je me suis orientée
-              vers la préparation physique générale pour les sportifs, avant de
-              me consacrer au coaching personnalisé, exclusivement à domicile.
-              Pour moi, la remise en forme,{" "}
-              <strong>le sport et le bien-être</strong> incluent également le
-              massage.
-              <br /> */}
+            <Typography variant="h4" component="h2" gutterBottom>
+              Mon Parcours
+            </Typography>
+            <Typography variant="body1">
               Passionnée de sports, j'ai pratiqué pendant de nombreuses années
               l'athlétisme (vitesse, relais, etc.) avant de décider de passer
               mon diplôme d'État <strong>BEMF</strong> (Brevet des métiers de la
@@ -45,28 +49,32 @@ const MainContent = () => {
         </MainContentWrapper>
       </Box>
       <SecondContainer>
-        <Typography>
-          {/* <br />
-          Je me suis donc formée à différentes techniques :<br />
-          <br />
-          - Le massage sportif, pour aider à la récupération musculaire et à
-          l'élimination de l'acide lactique.
-          <br />
-          <br />- <strong>Le drainage lymphatique</strong>, qui est une
-          technique de massage activant la circulation de la lymphe dans le
-          corps, réduit la rétention d'eau, améliore l'aspect de la peau et
-          affine la silhouette.
-          <br />
-          <br />
-          Selon les besoins et les attentes, j'établis un programme personnalisé
-          d'entretien et de remise en forme, alliant séances sportives et
-          massages. Pour plus de renseignements, vous pouvez me contacter au
-          numéro de téléphone et à l'adresse du site. */}
-          J’axe mon coaching personnalisé autour de trois éléments
-          complémentaires:
-          <br /> - La pratique physique <br />- La nutrition <br />- Le massage
-        </Typography>
-
+        <Box>
+          <Typography variant="h4" component="h2" gutterBottom>
+            Mon Approche
+          </Typography>
+          <Typography variant="body1" paragraph>
+            J'axe mon coaching personnalisé autour de trois éléments
+            complémentaires:
+          </Typography>
+          <CoachingList>
+            <CoachingItem>
+              <Typography variant="h6" component="h3">
+                La pratique physique
+              </Typography>
+            </CoachingItem>
+            <CoachingItem>
+              <Typography variant="h6" component="h3">
+                La nutrition
+              </Typography>
+            </CoachingItem>
+            <CoachingItem>
+              <Typography variant="h6" component="h3">
+                Le massage
+              </Typography>
+            </CoachingItem>
+          </CoachingList>
+        </Box>
         <SideContent />
       </SecondContainer>
     </Box>
