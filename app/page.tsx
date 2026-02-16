@@ -1,19 +1,15 @@
-import { Container, Box } from "@mui/material";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import MainContent from "@/components/mainContent";
-import { TopContentWrapper } from "./glogalstyles/styles";
 
 export default function Home() {
   return (
-    <TopContentWrapper>
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <Box sx={{ paddingTop: "64px" }}>
-        {" "}
-        {/* Add padding to account for fixed navbar */}
+      <main className="pt-24">
         <Header />
         <MainContent />
-      </Box>
-    </TopContentWrapper>
+      </main>
+    </div>
   );
 }

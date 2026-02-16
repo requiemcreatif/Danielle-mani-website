@@ -1,10 +1,6 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect } from "react";
-import {
-  ThemeProvider as MUIThemeProvider,
-  createTheme,
-} from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 type ThemeMode = "light" | "dark";
 
@@ -29,45 +25,31 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   const [mode, setMode] = useState<ThemeMode>("light");
 
   useEffect(() => {
-    const savedMode = localStorage.getItem("themeMode") as ThemeMode;
-    if (savedMode) {
+    const savedMode = localStorage.getItem("themeMode") as ThemeMode | null;
+    if (savedMode === "dark" || savedMode === "light") {
       setMode(savedMode);
+      return;
     }
+
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setMode(prefersDark ? "dark" : "light");
   }, []);
 
-  const toggleMode = () => {
-    const newMode = mode === "light" ? "dark" : "light";
-    setMode(newMode);
-    localStorage.setItem("themeMode", newMode);
-  };
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", mode === "dark");
+  }, [mode]);
 
-  const theme = createTheme({
-    palette: {
-      mode,
-      primary: {
-        main: "#7d0323",
-        contrastText: "#ffffff", // Add this line
-      },
-      background: {
-        default: mode === "light" ? "#ffffff" : "#121212",
-        paper: mode === "light" ? "#f5f5f5" : "#1e1e1e",
-      },
-      text: {
-        primary: mode === "light" ? "#121212" : "#ffffff", // Update this line
-        secondary: mode === "light" ? "#666666" : "#a0a0a0", // Add this line for secondary text
-      },
-    },
-    typography: {
-      fontFamily: "Montserrat, sans-serif",
-    },
-  });
+  const toggleMode = () => {
+    setMode((prev) => {
+      const next = prev === "light" ? "dark" : "light";
+      localStorage.setItem("themeMode", next);
+      return next;
+    });
+  };
 
   return (
     <ThemeContext.Provider value={{ mode, toggleMode }}>
-      <MUIThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </MUIThemeProvider>
+      {children}
     </ThemeContext.Provider>
   );
 };

@@ -1,172 +1,116 @@
 "use client";
+
 import React, { useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Switch,
-  useMediaQuery,
-  useTheme as useMuiTheme,
-  Container,
-  Box,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import Link from "next/link";
-import { styled } from "@mui/system";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import { useTheme } from "@/components/providers/ThemeProvider";
+import { Button } from "@/components/ui/button";
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  color: theme.palette.text.primary,
-  boxShadow: "none",
-  borderBottom: `1px solid ${theme.palette.divider}`,
-}));
-
-const NavLink = styled(Link)(({ theme }) => ({
-  color: theme.palette.text.primary,
-  textDecoration: "none",
-  fontWeight: 600,
-  fontSize: "1.1rem",
-  "&:hover": {
-    color: theme.palette.primary.main,
-  },
-}));
-
-const MotionDrawer = motion(Drawer);
+const navItems = [
+  { text: "Accueil", href: "#home" },
+  { text: "Services", href: "#services" },
+  { text: "Contact", href: "#contact" },
+];
 
 const Navbar = () => {
   const { mode, toggleMode } = useTheme();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const muiTheme = useMuiTheme();
-  const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
-
-  const navItems = [
-    { text: "Accueil", href: "#home" },
-    { text: "Services", href: "#services" },
-    { text: "Contact", href: "#contact" },
-  ];
-
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-      setDrawerOpen(open);
-    };
-
-  const drawerVariants = {
-    open: { x: 0 },
-    closed: { x: "100%" },
-  };
-
-  const drawer = (
-    <AnimatePresence>
-      {drawerOpen && (
-        <MotionDrawer
-          anchor="right"
-          open={drawerOpen}
-          onClose={toggleDrawer(false)}
-          variant="temporary"
-          ModalProps={{ keepMounted: true }}
-          sx={{
-            "& .MuiDrawer-paper": {
-              width: "100%",
-              backgroundColor: muiTheme.palette.background.paper,
-            },
-          }}
-          initial="closed"
-          animate="open"
-          exit="closed"
-          variants={drawerVariants}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        >
-          <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
-            <IconButton onClick={toggleDrawer(false)}>
-              <CloseIcon />
-            </IconButton>
-          </Box>
-          <List>
-            {navItems.map((item) => (
-              <ListItem
-                button
-                key={item.text}
-                component={Link}
-                href={item.href}
-                onClick={toggleDrawer(false)}
-                sx={{ textAlign: "center", py: 2 }}
-              >
-                <ListItemText
-                  primary={item.text}
-                  primaryTypographyProps={{
-                    variant: "h4",
-                    sx: { fontWeight: 600 },
-                  }}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </MotionDrawer>
-      )}
-    </AnimatePresence>
-  );
 
   return (
-    <StyledAppBar position="fixed">
-      <Container maxWidth="lg">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, fontWeight: 700 }}
+    <header className="fixed inset-x-0 top-4 z-50">
+      <div className="mx-auto flex h-16 w-[min(96%,1200px)] items-center justify-between rounded-full border border-black/10 bg-white/95 px-5 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur md:px-7 dark:border-white/15 dark:bg-black/85">
+        <Link href="#home" className="text-xl font-black tracking-[0.14em] text-foreground">
+          DM
+        </Link>
+
+        <nav className="hidden items-center gap-10 md:flex">
+          {navItems.slice(0, 2).map((item) => (
+            <Link
+              key={item.text}
+              href={item.href}
+              className="text-base font-medium text-brand-neutral600 transition-colors hover:text-foreground dark:text-zinc-300 dark:hover:text-white"
+            >
+              {item.text}
+            </Link>
+          ))}
+          <Link
+            href={navItems[2].href}
+            className="rounded-full bg-primary px-8 py-2.5 text-base font-semibold text-primary-foreground transition-colors hover:opacity-90"
           >
-            DM
-          </Typography>
-          {isMobile ? (
-            <>
-              <IconButton
-                edge="end"
-                color="inherit"
-                aria-label="menu"
-                onClick={toggleDrawer(true)}
-              >
-                <MenuIcon />
-              </IconButton>
-              {drawer}
-            </>
-          ) : (
-            <>
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.text}
-                  href={item.href}
-                  style={{ marginLeft: 20 }}
+            {navItems[2].text}
+          </Link>
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleMode}
+            aria-label="Toggle theme"
+            className="rounded-full text-foreground"
+          >
+            {mode === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </Button>
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setDrawerOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {drawerOpen && (
+          <>
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setDrawerOpen(false)}
+              className="fixed inset-0 z-40 bg-black/40 md:hidden"
+              aria-label="Close menu overlay"
+            />
+            <motion.aside
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 320, damping: 28 }}
+              className="fixed right-0 top-0 z-50 flex h-screen w-full max-w-sm flex-col border-l bg-background p-6 md:hidden"
+            >
+              <div className="mb-8 flex items-center justify-end">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setDrawerOpen(false)}
+                  aria-label="Close menu"
                 >
-                  {item.text}
-                </NavLink>
-              ))}
-            </>
-          )}
-          <Switch
-            checked={mode === "dark"}
-            onChange={toggleMode}
-            color="default"
-            inputProps={{ "aria-label": "toggle dark mode" }}
-            sx={{ ml: 2 }}
-          />
-        </Toolbar>
-      </Container>
-    </StyledAppBar>
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
+
+              <nav className="flex flex-col gap-2">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.text}
+                    href={item.href}
+                    className="rounded-md px-3 py-4 text-center text-2xl font-semibold hover:bg-muted"
+                    onClick={() => setDrawerOpen(false)}
+                  >
+                    {item.text}
+                  </Link>
+                ))}
+              </nav>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

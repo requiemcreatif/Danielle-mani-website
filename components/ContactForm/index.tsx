@@ -1,53 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Box,
-  Container,
-  Typography,
-  TextField,
-  Button,
-  Grid,
-  Dialog,
-  DialogContent,
-  IconButton,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import CloseIcon from "@mui/icons-material/Close";
-import { StyledButton } from "../mainContent/styles";
-const StyledForm = styled("form")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: theme.spacing(3),
-}));
-
-const StyledDialog = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialog-paper": {
-    borderRadius: theme.shape.borderRadius,
-    padding: theme.spacing(3),
-    maxWidth: 400,
-  },
-}));
-
-const ModalContent = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  textAlign: "center",
-}));
-
-const SuccessIcon = styled(CheckCircleOutlineIcon)(({ theme }) => ({
-  fontSize: 80,
-  color: theme.palette.success.main,
-  marginBottom: theme.spacing(2),
-}));
-
-const CloseButton = styled(IconButton)(({ theme }) => ({
-  position: "absolute",
-  right: theme.spacing(1),
-  top: theme.spacing(1),
-}));
+import { AnimatePresence, motion } from "framer-motion";
+import { CheckCircle2, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +16,9 @@ const ContactForm = () => {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
@@ -78,100 +38,118 @@ const ContactForm = () => {
         setIsModalOpen(true);
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        throw new Error("Échec de l'envoi du message");
+        throw new Error("Echec de l'envoi du message");
       }
     } catch (error) {
       console.error("Error sending message:", error);
-      // Handle error (you could show an error modal here)
     }
   };
 
   return (
-    <Box
-      component="section"
-      id="contact"
-      sx={{ bgcolor: "background.paper", py: 2 }}
-    >
-      <Container maxWidth="md">
-        <Typography variant="h3" component="h5" align="center" gutterBottom>
-          Contactez-moi
-        </Typography>
-        <StyledForm onSubmit={handleSubmit}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <TextField
-                fullWidth
-                label="Nom"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                variant="outlined"
-                required
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                fullWidth
-                label="Email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                type="email"
-                variant="outlined"
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Sujet"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                variant="outlined"
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                multiline
-                rows={4}
-                variant="outlined"
-                required
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <StyledButton type="submit" variant="contained" size="large">
-                Envoyer
-              </StyledButton>
-            </Grid>
-          </Grid>
-        </StyledForm>
-      </Container>
+    <section id="contact">
+      <h5 className="text-center text-3xl font-black tracking-tight">Contactez-moi</h5>
 
-      <StyledDialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <DialogContent>
-          <CloseButton onClick={() => setIsModalOpen(false)}>
-            <CloseIcon />
-          </CloseButton>
-          <ModalContent>
-            <SuccessIcon />
-            <Typography variant="h5" gutterBottom>
-              Message Envoyé
-            </Typography>
-            <Typography variant="body1">
-              Votre message a été envoyé avec succès. Je vous répondrai dans les
-              plus brefs délais.
-            </Typography>
-          </ModalContent>
-        </DialogContent>
-      </StyledDialog>
-    </Box>
+      <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="space-y-2">
+            <label htmlFor="name" className="text-sm font-medium">
+              Nom
+            </label>
+            <Input
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="email" className="text-sm font-medium">
+              Email
+            </label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <label htmlFor="subject" className="text-sm font-medium">
+            Sujet
+          </label>
+          <Input
+            id="subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label htmlFor="message" className="text-sm font-medium">
+            Message
+          </label>
+          <Textarea
+            id="message"
+            name="message"
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <Button type="submit" size="lg" className="w-full bg-[#7d0323] text-white hover:bg-[#66021d] md:w-auto">
+          Envoyer
+        </Button>
+      </form>
+
+      <AnimatePresence>
+        {isModalOpen && (
+          <>
+            <motion.button
+              className="fixed inset-0 z-50 bg-black/50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              aria-label="Close confirmation overlay"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="fixed left-1/2 top-1/2 z-50 w-[92%] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl border bg-background p-6 shadow-2xl"
+            >
+              <button
+                onClick={() => setIsModalOpen(false)}
+                aria-label="Close dialog"
+                className="absolute right-3 top-3 rounded-md p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              <div className="flex flex-col items-center text-center">
+                <CheckCircle2 className="mb-4 h-16 w-16 text-green-600" />
+                <h6 className="text-xl font-bold">Message envoye</h6>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Votre message a ete envoye avec succes. Je vous repondrai dans
+                  les plus brefs delais.
+                </p>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </section>
   );
 };
 

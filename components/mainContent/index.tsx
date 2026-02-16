@@ -1,29 +1,15 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import Danielle from "../../public/images/danielle_yoga.png";
-import { Box, Typography, useTheme } from "@mui/material";
 import SideContent from "../SideContent";
 import ContactForm from "../ContactForm";
-import { motion } from "framer-motion";
-import {
-  MainContentWrapper,
-  ContentContainer,
-  LeftColumn,
-  HeroSection,
-  HeroImage,
-  HeroText,
-  ApproachSection,
-  CoachingList,
-  CoachingItem,
-  SideContentWrapper,
-  ContactButton,
-  ContactFormWrapper,
-} from "./styles";
+import { Button } from "@/components/ui/button";
 
 const MainContent = () => {
-  const theme = useTheme();
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -53,80 +39,75 @@ const MainContent = () => {
   };
 
   return (
-    <MainContentWrapper component="main">
-      <ContentContainer>
-        <LeftColumn>
-          <HeroSection>
-            <HeroImage
-              as={motion.div}
-              whileHover={{ scale: 1.05 }}
+    <main>
+      <section className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-16 md:grid-cols-3 md:px-6">
+        <div className="space-y-12 md:col-span-2">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+            <motion.div
+              whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
+              className="overflow-hidden rounded-2xl border bg-muted/30 shadow-sm"
             >
               <Image
                 src={Danielle}
                 alt="Danielle Mani practicing yoga"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
+                className="h-full w-full object-cover"
               />
-            </HeroImage>
-            <HeroText>
-              <Typography variant="h2" component="h1" gutterBottom>
-                Mon Parcours
-              </Typography>
-              <Typography variant="body1">
-                Passionnée de sports, j'ai pratiqué pendant de nombreuses années
-                l'athlétisme (vitesse, relais, etc.) avant de décider de passer
-                mon diplôme d'État <strong>BEMF</strong> (Brevet des métiers de
-                la forme) et me consacrer à la{" "}
-                <strong>préparation physique générale</strong> pour les
-                sportifs.
-              </Typography>
-              <ContactButton variant="contained" href="#contact">
-                Contactez-moi
-              </ContactButton>
-            </HeroText>
-          </HeroSection>
-          <ApproachSection>
-            <Typography variant="h4" component="h2" gutterBottom>
-              Mon Approche
-            </Typography>
-            <Typography variant="body1" paragraph>
-              J'axe mon coaching personnalisé autour de trois éléments
-              complémentaires:
-            </Typography>
-            <CoachingList
+            </motion.div>
+
+            <div>
+              <h2 className="text-3xl font-black tracking-tight">Mon Parcours</h2>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                Passionnee de sports, j&apos;ai pratique pendant de nombreuses annees
+                l&apos;athletisme (vitesse, relais, etc.) avant de decider de passer mon
+                diplome d&apos;Etat <strong>BEMF</strong> (Brevet des metiers de la forme)
+                et me consacrer a la <strong>preparation physique generale</strong> pour
+                les sportifs.
+              </p>
+              <Button asChild className="mt-6 bg-[#7d0323] text-white hover:bg-[#66021d]">
+                <Link href="#contact">Contactez-moi</Link>
+              </Button>
+            </div>
+          </div>
+
+          <div id="services">
+            <h3 className="text-2xl font-black tracking-tight">Mon Approche</h3>
+            <p className="mt-3 text-muted-foreground">
+              J&apos;axe mon coaching personnalise autour de trois elements complementaires:
+            </p>
+
+            <motion.ul
               variants={containerVariants}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              className="mt-6 grid gap-3"
             >
-              {["La pratique physique", "La nutrition", "Le massage"].map(
-                (item, index) => (
-                  <CoachingItem
-                    key={index}
-                    variants={itemVariants}
-                    whileHover="hover"
-                  >
-                    <Typography variant="h6" component="h3">
-                      {item}
-                    </Typography>
-                  </CoachingItem>
-                )
-              )}
-            </CoachingList>
-          </ApproachSection>
-        </LeftColumn>
-        <SideContentWrapper>
+              {["La pratique physique", "La nutrition", "Le massage"].map((item) => (
+                <motion.li
+                  key={item}
+                  variants={itemVariants}
+                  whileHover="hover"
+                  className="rounded-lg border bg-card p-4"
+                >
+                  <h4 className="font-semibold">{item}</h4>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+        </div>
+
+        <div>
           <SideContent />
-        </SideContentWrapper>
-      </ContentContainer>
-      <ContactFormWrapper>
-        <ContactForm />
-      </ContactFormWrapper>
-    </MainContentWrapper>
+        </div>
+      </section>
+
+      <section className="border-t bg-muted/20">
+        <div className="mx-auto w-full max-w-4xl px-4 py-14 md:px-6">
+          <ContactForm />
+        </div>
+      </section>
+    </main>
   );
 };
 
